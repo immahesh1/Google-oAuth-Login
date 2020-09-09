@@ -3,6 +3,7 @@ const dotenv = require('dotenv');
 const morgan = require('morgan');
 const exphbs = require('express-handlebars');
 const connectMongoDB = require('./config/db');
+const { route } = require('./routes');
 
 //Load config
 dotenv.config({ path: './config/config.env' });
@@ -16,6 +17,10 @@ const app = express();
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
 }
+
+// Routes
+app.use('/', require('./routes/index'));
+app.use('/dashboard', require('./routes/index'));
 
 //Handlebars
 app.engine('.hbs', exphbs({ defaultLayout: 'main', extname: '.hbs' }));
