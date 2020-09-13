@@ -4,8 +4,8 @@ const dotenv = require('dotenv');
 const morgan = require('morgan');
 const exphbs = require('express-handlebars');
 const connectMongoDB = require('./config/db');
-const session = require('express-session');
 const passport = require('passport');
+const session = require('express-session');
 const { route } = require('./routes');
 const { static } = require('express');
 
@@ -36,7 +36,6 @@ app.use(
     secret: 'keyboard cat',
     resave: false,
     saveUninitialized: false,
-    cookie: { secure: true },
   })
 );
 
